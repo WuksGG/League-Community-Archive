@@ -73,7 +73,7 @@ The League Boards Archive project aims to not only provide an interface for this
   - [ ] Discussion view (nested comments)
   - [ ] Chronological view (no nest, in order) 
 
-See the [open issues](https://github.com/WuksGG/League-Boards-Archive/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/WuksGG/League-Community-Archive/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -86,9 +86,9 @@ We use [Semantic Versioning](https://semver.org/) for versioning. For the versio
 
 ## Contact
 
-Michael Chan - [WuksGG](https://github.com/WuksGG) - michael@struxlab.com
+Michael Chan - [WuksGG](https://github.com/WuksGG) - mchan@struxlab.com
 
-Project Link: https://github.com/WuksGG/League-Boards-Archive
+Project Link: https://github.com/WuksGG/League-Community-Archive
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
