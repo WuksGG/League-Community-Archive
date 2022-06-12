@@ -48,14 +48,14 @@ The League Boards Archive project aims to not only provide an interface for this
 
 ### Prerequisites
 
-* [Node.js v16+](https://nodejs.org/en/)
 * [Redis v5.0+](https://redis.io/)
 * [MongoDB 5.0](https://www.mongodb.com/docs/manual/release-notes/5.0/)
 
 ### Installation
 
-1. Enter the app directory `cd boards-app` and install dependencies `yarn install`
-2. Run the app in development mode using `yarn run dev`
+1. Install Volta `curl https://get.volta.sh | bash` and run `volta setup` to setup the Node and Yarn dependencies
+2. Enter the app directory `cd boards-app` and install dependencies `yarn install`
+3. Run the app in development mode using `yarn run dev`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -71,7 +71,7 @@ The League Boards Archive project aims to not only provide an interface for this
 - [ ] Be able to render the list of discussions in that category with pagination
 - [ ] Properly render discussions with
   - [ ] Discussion view (nested comments)
-  - [ ] Chronological view (no nest, in order) 
+  - [ ] Chronological view (no nest, in order)
 
 See the [open issues](https://github.com/WuksGG/League-Community-Archive/issues) for a full list of proposed features (and known issues).
 

@@ -1,3 +1,7 @@
+# Repository Specific/Custom Overrides
+database/files/*
+.DS_Store
+
 # Logs
 logs
 *.log
