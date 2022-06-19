@@ -55,11 +55,13 @@ async function processComment(
         return;
       }
       if (e.code === 'P2002') {
-        console.log(
-          `Unique violation exception on comment ${discussion.id}, ${
-            comment.id
-          } - attempt #${retry + 1} - `,
-        );
+        if (retry > 5) {
+          console.log(
+            `Unique violation exception on comment ${discussion.id}, ${
+              comment.id
+            } - attempt #${retry + 1}`,
+          );
+        }
         await processComment(comment, discussion, retry + 1);
       } else {
         console.log(`Unknown error on: ${discussion.id}, ${comment.id}`);
@@ -174,11 +176,13 @@ async function processDiscussion(
         return;
       }
       if (e.code === 'P2002') {
-        console.log(
-          `Unique violation exception on discussion ${
-            discussion.id
-          } - attempt #${retry + 1} - `,
-        );
+        if (retry > 5) {
+          console.log(
+            `Unique violation exception on discussion ${
+              discussion.id
+            } - attempt #${retry + 1}`,
+          );
+        }
         await processDiscussion(discussion, retry + 1);
       } else {
         console.log(`Unknown error on: ${discussion.id}`);
