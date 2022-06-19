@@ -1,4 +1,4 @@
-import { PathOrFileDescriptor } from 'fs';
+import { PathOrFileDescriptor, PathLike } from 'fs';
 import async from 'async';
 import extractFile from './extract';
 import transformAndLoad from './transformLoad';

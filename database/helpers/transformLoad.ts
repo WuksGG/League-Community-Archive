@@ -75,9 +75,12 @@ async function processComments(
   comments: any[],
   discussion: Record<string, any>,
 ) {
-  comments.forEach(async (comment) => {
-    await processComment(comment, discussion);
-  });
+  // comments.forEach(async (comment) => {
+  //   await processComment(comment, discussion);
+  // });
+  await Promise.all(
+    comments.map((comment) => processComment(comment, discussion)),
+  );
 }
 
 async function processDiscussion(
@@ -139,7 +142,7 @@ async function processDiscussion(
           ? new Date(discussion.lastCommentedAt)
           : null,
         contentType: discussion.contentType,
-        content: discussion.content,
+        content: discussion.content || { body: '' },
         hasRioterComments: discussion.hasRioterComments,
       },
     });
@@ -193,6 +196,8 @@ async function processDiscussion(
 }
 
 async function transformAndLoad({ discussion }: Record<string, any>) {
+  // if (discussion.id !== '0TZ1NNEw') return;
+  // console.log(discussion);
   await processDiscussion(discussion);
   await processComments(discussion.comments.comments, discussion);
 }
