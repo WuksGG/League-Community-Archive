@@ -45,6 +45,15 @@ async function processComment(
         numChildren: comment.numChildren,
       },
     });
+    if (user.isRioter) {
+      await prisma.riotPost.create({
+        data: {
+          discussionId: discussion.id,
+          commentId: comment.id,
+          createdAt: discussion.createdAt && new Date(discussion.createdAt),
+        },
+      });
+    }
     // process.stdout.write(`${discussion.id}, ${comment.id}\n`);
     // eslint-disable-next-line no-use-before-define
     await processComments(replies.comments, discussion);
@@ -142,7 +151,7 @@ async function processDiscussion(
           ? new Date(discussion.lastCommentedAt)
           : null,
         contentType: discussion.contentType,
-        content: discussion.content || { body: '' },
+        content: discussion.content || undefined,
         hasRioterComments: discussion.hasRioterComments,
       },
     });

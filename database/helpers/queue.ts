@@ -5,7 +5,7 @@ import transformAndLoad from './transformLoad';
 
 // Will need to adjust implementation to handle
 // race conditions within discussions if increased workers
-const MAX_QUEUE_WORKERS = 5;
+const MAX_QUEUE_WORKERS = 10;
 console.log(`Initializing queue with ${MAX_QUEUE_WORKERS}.`);
 
 const queue = async.queue(async (filePath: PathOrFileDescriptor, callback) => {
