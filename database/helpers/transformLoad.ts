@@ -181,6 +181,7 @@ async function processDiscussion(
         },
       });
     }
+    await processComments(discussion.comments.comments, discussion);
   } catch (e) {
     if (e instanceof PrismaClientKnownRequestError) {
       if (retry >= MAX_RETRY_COUNT) {
@@ -205,10 +206,9 @@ async function processDiscussion(
 }
 
 async function transformAndLoad({ discussion }: Record<string, any>) {
-  // if (discussion.id !== '0TZ1NNEw') return;
+  // if (discussion.id !== 'ubcx5iEB') return;
   // console.log(discussion);
   await processDiscussion(discussion);
-  await processComments(discussion.comments.comments, discussion);
 }
 
 export default transformAndLoad;
