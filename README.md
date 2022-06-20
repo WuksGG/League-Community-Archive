@@ -11,7 +11,7 @@
   <p align="center">
     An archive of the League of Legends Boards, developed to preserve 6 years of user contributions
     <br />
-    <a href="#"><strong>Explore the docs »</strong></a>
+    <a href="#"><strong>Explore the docs (Coming Soon) »</strong></a>
     <br />
     <br />
     <a href="https://archive.runeterra.net/">View Demo</a>
@@ -32,13 +32,14 @@ The League Boards Archive project aims to not only provide an interface for this
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Chakra UI](https://chakra-ui.com/)
-* [Marked.js](https://marked.js.org/)
-* [MongoDB](https://www.mongodb.com/)
+- [Next.js](https://nextjs.org/)
+- [React.js](https://reactjs.org/)
+- [Chakra UI](https://chakra-ui.com/)
+- [Marked.js](https://marked.js.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ### Supported & Planned Region Support
+
 - [ ] Europe
 - [ ] North America
 
@@ -48,13 +49,14 @@ The League Boards Archive project aims to not only provide an interface for this
 
 ### Prerequisites
 
-* [Redis v5.0+](https://redis.io/)
-* [MongoDB 5.0](https://www.mongodb.com/docs/manual/release-notes/5.0/)
+<!-- - [Redis v5.0+](https://redis.io/) -->
+
+- [PostgreSQL 11.0+](https://www.postgresql.org/)
 
 ### Installation
 
 1. Install Volta `curl https://get.volta.sh | bash` and run `volta setup` to setup the Node and Yarn dependencies
-2. Enter the app directory `cd boards-app` and install dependencies `yarn install`
+2. Enter the app directory `cd web-app` and install dependencies `yarn install`
 3. Run the app in development mode using `yarn run dev`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -64,8 +66,10 @@ The League Boards Archive project aims to not only provide an interface for this
 <!-- ## Usage -->
 
 <!-- ROADMAP -->
-## Roadmap
 
+## Todo
+
+- [ ] Add partitioning to database to improve performance
 - [ ] Build out the Homepage with a list of supported regions
 - [ ] Build out the Categories page with a list of categories for that region
 - [ ] Be able to render the list of discussions in that category with pagination
@@ -80,6 +84,7 @@ See the [open issues](https://github.com/WuksGG/League-Community-Archive/issues)
 <!-- ## Contributing -->
 
 ## Versioning
+
 We use [Semantic Versioning](https://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/WuksGG/League-Boards-Archive/tags).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -96,8 +101,7 @@ Project Link: https://github.com/WuksGG/League-Community-Archive
 
 ## Acknowledgments
 
-* [othneildrew/Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* [Axios](https://www.npmjs.com/package/axios)
-* [React Timeago](https://www.npmjs.com/package/react-timeago), [timeago.js](https://timeago.org/)
+- [othneildrew/Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+- [NA/EU Boards Archive](https://www.reddit.com/r/leagueoflegends/comments/fh4ptk/i_have_created_a_backup_archive_of_all_of_the_lol/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
