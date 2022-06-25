@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start-dev": "nodemon index.ts",
-    "tsw": "npx tsc -W",
-    "start": "npx ts-node index.ts"
+    "start": "npx ts-node index.ts",
+    "start-dev": "npx ts-node index.ts -W"
   },
   "license": "MIT",
   "private": true,
@@ -23,7 +22,6 @@
     "async": "^3.2.3",
     "dotenv": "^16.0.0",
     "inquirer": "^8.2.4",
-    "nodemon": "^2.0.16",
     "tar": "^6.1.11"
   }
 }

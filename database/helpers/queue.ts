@@ -1,4 +1,4 @@
-import { PathOrFileDescriptor, PathLike } from 'fs';
+import { PathOrFileDescriptor } from 'fs';
 import async from 'async';
 import extractFile from './extract';
 import transformAndLoad from './transformLoad';
@@ -6,7 +6,7 @@ import transformAndLoad from './transformLoad';
 // Will need to adjust implementation to handle
 // race conditions within discussions if increased workers
 const MAX_QUEUE_WORKERS = 10;
-console.log(`Initializing queue with ${MAX_QUEUE_WORKERS}.`);
+process.stdout.write(`Initializing queue with ${MAX_QUEUE_WORKERS}.\n`);
 
 const queue = async.queue(async (filePath: PathOrFileDescriptor, callback) => {
   try {

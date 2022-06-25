@@ -1,11 +1,20 @@
 import fs from 'fs';
 import 'dotenv/config';
 import path from 'path';
+import inquirer from 'inquirer';
 import queue from './helpers/queue';
 import prisma from './utils/dbClient';
 
+import questions from './entities/questions';
+
 const startEtl = async () => {
-  const pathName = path.join(__dirname, 'files', 'na');
+  // const isActionConfirmed = await prompt('Are you sure you want to begin ETL?');
+
+  const { isStartConfirmed, selectedRegion } = await inquirer.prompt(questions);
+  if (!isStartConfirmed) return;
+
+  // if (isActionConfirmed === 'n') return;
+  const pathName = path.join(__dirname, 'files', selectedRegion);
   const fileNames = fs.readdirSync(pathName);
   const filePaths = fileNames.map((fileName) => path.join(pathName, fileName));
   await prisma.riotPost.deleteMany();
