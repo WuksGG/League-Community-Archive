@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["extendedIndexes"]
 }
 
 datasource db {
@@ -12,7 +13,7 @@ model Applications {
   name          String        @db.VarChar(100)
   locale        String        @db.VarChar(10)
   description   String?       @db.VarChar
-  shortName     String        @db.VarChar(50)
+  shortName     String        @db.VarChar(50) @unique
   stickiedPosts Json?         @default("[]")
   Discussions   Discussions[]
 }
@@ -21,7 +22,7 @@ model Comments {
   id          String      @db.VarChar
   threadId    String      @db.VarChar(15)
   message     String?     @db.VarChar
-  userId      BigInt
+  userId      String
   parentId    String?     @db.VarChar
   createdAt   DateTime?   @db.Timestamptz(6)
   modifiedAt  DateTime?   @db.Timestamptz(6)
@@ -39,7 +40,7 @@ model Discussions {
   id                String       @id @db.VarChar(15)
   title             String       @db.VarChar(300)
   applicationId     String       @db.VarChar(20)
-  userId            BigInt?
+  userId            String?
   upvotes           Int?
   downvotes         Int?
   viewCount         Int?
@@ -55,6 +56,9 @@ model Discussions {
   Users             Users?       @relation(fields: [userId], references: [id])
   Comments          Comments[]
   RiotPosts         RiotPosts[]
+
+  @@index([id], type: Hash)
+  @@index([lastCommentedAt(sort: Desc), createdAt(sort: Desc)])
 }
 
 model RiotPosts {
@@ -66,7 +70,7 @@ model RiotPosts {
 }
 
 model Users {
-  id          BigInt        @id
+  id          String        @id
   name        String?       @db.VarChar(50)
   level       Int?          @default(1)
   icon        Int           @default(0)
@@ -78,4 +82,6 @@ model Users {
   createdAt   DateTime      @db.Timestamptz(6)
   Comments    Comments[]
   Discussions Discussions[]
+
+  @@index([id], type: Hash)
 }

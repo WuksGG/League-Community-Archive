@@ -30,9 +30,9 @@ model RiotPost {
 }
 
 model User {
-  id          BigInt       @id
-  name        String?       @db.VarChar(50)
-  level       Int?          @default(1)
+  id          String       @id
+  name        String?      @db.VarChar(50)
+  level       Int?         @default(1)
   icon        Int          @default(0)
   region      String       @db.VarChar(5)
   isModerator Boolean      @default(false)
@@ -50,7 +50,7 @@ model Discussion {
   id                String      @id @db.VarChar(15)
   title             String      @db.VarChar(300)
   applicationId     String      @db.VarChar(20)
-  userId            BigInt?
+  userId            String?
   upvotes           Int?
   downvotes         Int?
   viewCount         Int?
@@ -74,7 +74,7 @@ model Comment {
   id          String     @db.VarChar
   threadId    String     @db.VarChar(15)
   message     String?    @db.VarChar
-  userId      BigInt
+  userId      String
   parentId    String?    @db.VarChar
   createdAt   DateTime?  @db.Timestamptz(6)
   modifiedAt  DateTime?  @db.Timestamptz(6)
