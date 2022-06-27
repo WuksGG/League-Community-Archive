@@ -15,6 +15,7 @@ export const getDiscussions = async (
       locale: true,
       name: true,
       shortName: true,
+      totalPosts: true,
       Discussions: {
         orderBy: {
           createdAt: 'desc',
