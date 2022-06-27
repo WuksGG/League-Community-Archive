@@ -1,4 +1,3 @@
-import Discussions from '../../pages/[locale]/c/[appShortName]';
 import prisma from '../../utils/database';
 
 export const getDiscussions = async (
@@ -10,38 +9,41 @@ export const getDiscussions = async (
     where: {
       shortName: shortName,
     },
-    // select: {
-    //   id: true,
-
-    //   Discussions: {
-    //     orderBy: {
-    //       createdAt: 'desc',
-    //     },
-    //     skip: offset,
-    //     take: limit,
-    //     include: { Users: true },
-    //   },
-    // },
-    include: {
+    select: {
+      id: true,
+      description: true,
+      locale: true,
+      name: true,
+      shortName: true,
       Discussions: {
         orderBy: {
           createdAt: 'desc',
         },
         skip: offset,
         take: limit,
-        include: { Users: true },
+        select: {
+          id: true,
+          createdAt: true,
+          title: true,
+          upvotes: true,
+          downvotes: true,
+          hasRioterComments: true,
+          viewCount: true,
+          lastCommentedAt: true,
+          softComments: true,
+          totalComments: true,
+          Users: true,
+          Applications: {
+            select: {
+              id: true,
+              locale: true,
+              name: true,
+              shortName: true,
+            },
+          },
+        },
       },
     },
   });
-  // console.log(application);
   return application;
-  // const result = await prisma.discussions.findMany({
-  //   skip: offset,
-  //   take: limit,
-  //   where: {
-  //     Applications:
-  //   },
-  //   include: { Users: true },
-  // });
-  // return result;
 };

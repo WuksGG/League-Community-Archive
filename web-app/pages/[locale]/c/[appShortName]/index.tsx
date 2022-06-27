@@ -3,12 +3,13 @@ import { getDiscussions } from '../../../../components/Discussions/helpers';
 
 type DiscussionsProps = {
   region: string | undefined;
-  discussions: string;
+  data: string;
 };
 
 const Discussions: NextPage<DiscussionsProps> = (props) => {
-  const discussions = JSON.parse(props.discussions);
-  console.log(discussions);
+  const data = JSON.parse(props.data);
+  console.log(data);
+  return <div>test</div>;
   // return discussions.map((discussion) => {
   //   return <div>{discussion.title}</div>;
   // });
@@ -17,13 +18,15 @@ const Discussions: NextPage<DiscussionsProps> = (props) => {
 export const getServerSideProps: GetServerSideProps<DiscussionsProps> = async (
   context,
 ) => {
-  // console.log({ q: context.query });
-  const result = await getDiscussions(context.query.appShortName);
-  console.log({ result });
+  const shortName = context.query.appShortName as string | undefined;
+  if (!shortName)
+    return {
+      notFound: true,
+    };
   return {
     props: {
       region: 'na',
-      discussions: JSON.stringify(result?.Discussions),
+      data: JSON.stringify(await getDiscussions(shortName)),
     },
   };
 };

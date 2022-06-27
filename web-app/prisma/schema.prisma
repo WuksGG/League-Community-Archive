@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["extendedIndexes"]
 }
 
@@ -13,8 +13,9 @@ model Applications {
   name          String        @db.VarChar(100)
   locale        String        @db.VarChar(10)
   description   String?       @db.VarChar
-  shortName     String        @db.VarChar(50) @unique
+  shortName     String        @unique @db.VarChar(50)
   stickiedPosts Json?         @default("[]")
+  totalPosts    Int?          @default(0)
   Discussions   Discussions[]
 }
 
