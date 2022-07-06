@@ -1,21 +1,35 @@
-import { getCategories } from '../../../components/Categories/helpers';
 import NextLink from 'next/link';
+import { getCategories } from '../../../components/Categories/helpers';
+import { NextPage, GetServerSideProps } from 'next';
+import { Applications } from '@prisma/client';
 
-const Categories = (props) => {
-  return props.categories.map((category) => {
-    return (
-      <NextLink href={`/en/c/${category.shortName}`} key={category.id}>
-        <div>{category.name}</div>
-      </NextLink>
-    );
-  });
+type CategoriesProps = {
+  locale: string | undefined;
+  categories: Applications[];
+};
+const Categories: NextPage<CategoriesProps> = ({ categories }) => {
+  return (
+    <>
+      {categories.map((category) => {
+        return (
+          <NextLink href={`/en/c/${category.shortName}`} key={category.id}>
+            <div>{category.name}</div>
+          </NextLink>
+        );
+      })}
+    </>
+  );
 };
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<CategoriesProps> = async (
+  context,
+) => {
   const categories = await getCategories();
-  console.log(categories);
   return {
-    props: { locale: context.query.locale, categories },
+    props: {
+      locale: context.query.locale as string | undefined,
+      categories,
+    },
   };
 };
 
